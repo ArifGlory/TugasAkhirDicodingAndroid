@@ -1,7 +1,10 @@
 package com.tapisdev.dicodingandroidtugas1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tapisdev.dicodingandroidtugas1.adapter.ArticleAdapter
 import com.tapisdev.dicodingandroidtugas1.databinding.ActivityMainBinding
@@ -21,6 +24,23 @@ class MainActivity : AppCompatActivity() {
 
         populateData()
         setupUI()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.about_page -> {
+                //intent here
+                val i = Intent(this,AboutActivity::class.java)
+                startActivity(i)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun populateData(){
