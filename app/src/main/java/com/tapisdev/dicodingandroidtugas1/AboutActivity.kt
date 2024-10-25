@@ -22,7 +22,7 @@ class AboutActivity : AppCompatActivity() {
         binding.tvName.text = "Arif Rahman Edison"
         binding.tvEmail.text = "arifglory46@gmail.com"
         Glide.with(this)
-            .load(imageUrl)
+            .load(R.drawable.dicoding_profile)
             .circleCrop()
             .into(findViewById(R.id.ivAbout))
     }

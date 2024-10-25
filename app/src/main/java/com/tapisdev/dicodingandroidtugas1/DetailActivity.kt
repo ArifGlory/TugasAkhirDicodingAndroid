@@ -28,12 +28,9 @@ class DetailActivity : AppCompatActivity() {
         actionBar?.title = "Detail Article"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.tvTitle.text = article.title
-        binding.tvDescription.text = article.description
-        Glide.with(this)
-            .load(article.image)
-            .placeholder(R.drawable.placeholder)
-            .into(binding.ivBackdrop)
+        binding.tvTitle.text = getString(article.title)
+        binding.tvDescription.text = getString(article.description)
+        binding.ivBackdrop.setImageResource(article.image)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

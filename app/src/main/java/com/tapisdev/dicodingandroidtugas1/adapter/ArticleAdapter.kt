@@ -35,15 +35,16 @@ class ArticleAdapter (private var articles : List<Article>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val article = articles[position]
-        holder.tvTitle.text = article.title
+        holder.tvTitle.text = holder.tvTitle.context.getString(article.title)
 
-        val descriptionWords = article.description.split(" ")
+        val descriptionWords = holder.tvTitle.context.getString(article.description).split(" ")
         val shortDescription = descriptionWords.take(8).joinToString(" ")
         holder.tvDescription.text = "$shortDescription ..."
-        Glide.with(holder.itemView.context)
+       /* Glide.with(holder.itemView.context)
             .load(article.image)
             .placeholder(R.drawable.placeholder)
-            .into(holder.ivArticle)
+            .into(holder.ivArticle)*/
+        holder.ivArticle.setImageResource(article.image)
 
         holder.llArticle.setOnClickListener {
             val i = Intent(holder.llArticle.context,DetailActivity::class.java)
